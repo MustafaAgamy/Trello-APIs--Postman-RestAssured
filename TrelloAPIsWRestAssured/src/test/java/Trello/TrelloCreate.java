@@ -9,8 +9,8 @@ import static io.restassured.RestAssured.given;
 
 public class TrelloCreate {
 
-    public static String key = "";
-    public static String token = "";
+    public static final String key = "";
+    public static final String token = "";
 
 
     @Test(priority = 1)
