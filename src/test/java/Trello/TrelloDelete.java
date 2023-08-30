@@ -36,8 +36,8 @@ public class TrelloDelete {
     }
 
     @Test
-    public void deleteChecklist(ITestContext contextChecklist){
-        String idChecklist = (String) contextChecklist.getAttribute("ChecklistId");
+    public void deleteChecklist(ITestContext context){
+        String idChecklist = (String) context.getAttribute("ChecklistId");
 //        String idChecklist = jsonReaderTest.readJson("ChecklistId");
 
         given().
@@ -51,8 +51,8 @@ public class TrelloDelete {
         log.info("Deleted Checklist with id < " + idChecklist + " >");
     }
     @Test(dependsOnMethods = "deleteChecklist")
-    public void deleteCard(ITestContext contextCard){
-        String idCard = (String) contextCard.getAttribute("cardId");
+    public void deleteCard(ITestContext context){
+        String idCard = (String) context.getAttribute("cardId");
 //        String idCard = jsonReaderTest.readJson("cardId");
 
         given().
@@ -68,8 +68,8 @@ public class TrelloDelete {
 
     }
     @Test(dependsOnMethods = "deleteCard")
-    public void deleteList(ITestContext contextList){
-        String idList = (String) contextList.getAttribute("listId");
+    public void deleteList(ITestContext context){
+        String idList = (String) context.getAttribute("listId");
 //        String idList = jsonReaderTest.readJson("listId");
 
         given().
@@ -85,8 +85,8 @@ public class TrelloDelete {
 
     }
     @Test(dependsOnMethods = "deleteList")
-    public void deleteBoard(ITestContext contextBoard){
-        String idBoard = (String) contextBoard.getAttribute("boardId");
+    public void deleteBoard(ITestContext context){
+        String idBoard = (String) context.getAttribute("boardId");
 //        String idBoard = jsonReaderTest.readJson("idBoard");
 
         given().
