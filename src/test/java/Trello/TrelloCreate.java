@@ -43,7 +43,7 @@ public class TrelloCreate {
     }
 
     @Test
-    public void createBoard(ITestContext contextBoard){
+    public void createBoard(ITestContext context){
 
         String idBoard =
             given().
@@ -57,16 +57,16 @@ public class TrelloCreate {
                     .jsonPath().getString("id");
 
         log.info("Generated Board id is < " + idBoard + " >");
-        contextBoard.setAttribute("boardId", idBoard);
+        context.setAttribute("boardId", idBoard);
 
 
 //        jsonReaderData.writeJson("idBoard",idBoard);
     }
     @Test(dependsOnMethods = "createBoard")
-    public void createList(ITestContext contextBoard,ITestContext contextList){
+    public void createList(ITestContext context){
 //      String idBoard =  jsonReaderData.readJson("idBoard");
 
-        String idBoard = (String) contextBoard.getAttribute("boardId");
+        String idBoard = (String) context.getAttribute("boardId");
         String idList =
 
             given().
@@ -81,16 +81,16 @@ public class TrelloCreate {
                     .jsonPath().getString("id");
 
         log.info("Generated List id is < " + idList + " >");
-        contextList.setAttribute("listId", idList);
+        context.setAttribute("listId", idList);
 
 
 //        jsonReaderData.writeJson("listId",idList);
     }
     @Test(dependsOnMethods = "createList")
-    public void createCard(ITestContext contextList,ITestContext contextCard){
+    public void createCard(ITestContext context){
 //        String idList =  jsonReaderData.readJson("listId");
 
-        String idList = (String) contextList.getAttribute("listId");
+        String idList = (String) context.getAttribute("listId");
         String idCard =
 
             given().
@@ -105,16 +105,16 @@ public class TrelloCreate {
                     .jsonPath().getString("id");
 
         log.info("Generated Card id is < " + idCard + " >");
-        contextCard.setAttribute("cardId", idCard);
+        context.setAttribute("cardId", idCard);
 
 
 //        jsonReaderData.writeJson("cardId",idCard);
     }
     @Test(dependsOnMethods = "createCard")
-    public void createChecklist(ITestContext contextCard,ITestContext contextChecklist){
+    public void createChecklist(ITestContext context){
 //        String idCard =  jsonReaderData.readJson("cardId");
 
-        String idCard = (String) contextCard.getAttribute("cardId");
+        String idCard = (String) context.getAttribute("cardId");
         String idChecklist =
 
             given().
@@ -129,7 +129,7 @@ public class TrelloCreate {
                     .jsonPath().getString("id");
 
         log.info("Generated Checklist id is < " + idChecklist + " >");
-        contextChecklist.setAttribute("ChecklistId", idChecklist);
+        context.setAttribute("ChecklistId", idChecklist);
 
 
 //        jsonReaderData.writeJson("ChecklistId",idChecklist);
