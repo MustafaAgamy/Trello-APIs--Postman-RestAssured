@@ -47,7 +47,9 @@ public class TrelloDelete {
                 .queryParam("token", jsonReader.readJson("Token"))
                 .pathParam("idChecklist",idChecklist)
                 .when()
-                .delete("/1/checklists/{idChecklist}");
+                .delete("/1/checklists/{idChecklist}")
+                .then().statusCode(200);
+        
         log.info("Deleted Checklist with id < " + idChecklist + " >");
     }
     @Test(dependsOnMethods = "deleteChecklist")
@@ -62,7 +64,8 @@ public class TrelloDelete {
                 .queryParam("token",jsonReader.readJson("Token"))
                 .pathParam("idCard",idCard)
                 .when()
-                .delete("/1/cards/{idCard}");
+                .delete("/1/cards/{idCard}")
+                .then().statusCode(200);
 
         log.info("Deleted Card with id < " + idCard + " >");
 
@@ -77,9 +80,11 @@ public class TrelloDelete {
                 .with()
                 .queryParam("key",jsonReader.readJson("Key"))
                 .queryParam("token",jsonReader.readJson("Token"))
+                .queryParam("value","true")
                 .pathParam("idList",idList)
                 .when()
-                .delete("/1/lists/{idList}");
+                .put("/1/lists/{idList}/closed")
+                .then().statusCode(200);
 
         log.info("Deleted List with id < " + idList + " >");
 
@@ -96,7 +101,8 @@ public class TrelloDelete {
                 .queryParam("token",jsonReader.readJson("Token"))
                 .pathParam("idBoard",idBoard)
                 .when()
-                .delete("/1/boards/{idBoard}");
+                .delete("/1/boards/{idBoard}")
+                .then().statusCode(200);
 
         log.info("Deleted Board with id < " + idBoard + " >");
 
